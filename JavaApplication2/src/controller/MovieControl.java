@@ -6,19 +6,43 @@ package controller;
 
 import DAO.MovieDAOImpl;
 import java.util.*;
+import model.Movie;
 
 /**
  *
  * @author SAD
  */
 public class MovieControl {
- MovieDAOImpl movieDAO = new MovieDAOImpl();
- public void addMovie(){
-      Scanner sc = new Scanner(System.in);
-      System.out.println("Nhập id phim");
-      int idMovie =sc.nextInt();
-      System.out.println("Nhập tên phim :");
-         String nameMovie = sc.nextLine();
-         
- }
+
+    public void addMovie() {
+        MovieDAOImpl movieDAOImpl = new MovieDAOImpl();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhập id phim");
+        String idMovie = sc.nextLine();
+        System.out.println("Nhập tên phim :");
+        String nameMovie = sc.nextLine();  
+        System.out.println("Giá vé xem phim");
+        String priceMovie =  sc.nextLine();  
+        System.out.println("Nhập số phòng chiếu phim :");
+        String idRoomMovie = sc.nextLine();
+        System.out.println("Nhà sáng tác :");
+        String director = sc.nextLine();
+        Movie movie = new Movie(idMovie, nameMovie, priceMovie, idRoomMovie, director);
+        if (!movieDAOImpl.CheckMovie(idMovie, nameMovie)) {
+            movieDAOImpl.addMovie(movie);
+            System.out.println("Thêm phim thành công");
+        }
+        else System.out.println("Phim đã tồn tại");
+    }
+    public void deleteMovie(){
+        MovieDAOImpl movieDAOImpl = new MovieDAOImpl();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhập id phim");
+         String idMovie = sc.nextLine();
+        if(movieDAOImpl.CheckMovie(idMovie)){
+            movieDAOImpl.deleteMovieById(idMovie);
+            System.out.println("Xóa thành công");
+        }
+        else System.out.println("Phim không tồn tại");
+    }
 }

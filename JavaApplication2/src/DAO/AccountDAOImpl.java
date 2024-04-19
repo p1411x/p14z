@@ -26,8 +26,7 @@ public class AccountDAOImpl implements AccountDAO {
     public boolean CheckAccount(String userName ,String passWord) {
         String sql="SELECT * FROM Account WHERE userName ='"+userName+"'and passWord='"+passWord+"'" ;
         try {
-//            PreparedStatement ps = cons.prepareStatement(sql);
-//            ResultSet rs = ps.executeQuery();
+            
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();

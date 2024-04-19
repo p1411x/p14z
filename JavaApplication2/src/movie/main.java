@@ -2,19 +2,13 @@ package movie;
 
 import controller.DangKy;
 import controller.DangNhap;
-import java.util.*;
+import controller.MovieControl;
+import java.util.Scanner;
 import model.Movie;
 
-/**
- *
- * @author SAD
- */
 public class main {
 
-    private static boolean checkLogin = false;
-
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("Chào các bạn");
@@ -27,7 +21,7 @@ public class main {
                 case 1: // đăng ký
                     DangKy dangKy = new DangKy();
                     dangKy.DangKy();
-                    start();
+                  
                     pressAnyKey();
                     break;
                 case 2: // đăng nhập
@@ -45,13 +39,50 @@ public class main {
             }
         }
     }
-public static void start(){
-    
-}
+
+    public static void start() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhập tùy chọn bạn muốn: ");
+        System.out.println("1. Xem danh sách chức năng phim");
+        
+        int tuychon = sc.nextInt();
+        switch (tuychon) {
+            case 1:
+                caseMovie();
+                break;
+            default:
+                System.out.println("Nhập sai tùy chọn, vui lòng nhập lại");
+                pressAnyKey();
+                break;
+        }
+    }
+
+    public static void caseMovie() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1. Thêm phim");
+        System.out.println("2. Xóa phim theo id ");
+        System.out.println("Nhập tùy chọn bạn muốn: ");
+        int tuychon = sc.nextInt();
+        switch (tuychon) {
+            case 1: // thêm phim
+                MovieControl moviecontrol = new MovieControl();
+                moviecontrol.addMovie();
+                break;
+            case 2 :// xóa phim
+                MovieControl movieControl = new MovieControl();
+                movieControl.deleteMovie();
+                break;
+            default:
+                System.out.println("Nhập sai tùy chọn, vui lòng nhập lại");
+                pressAnyKey();
+                break;
+        }
+    }
+
     public static void pressAnyKey() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n\nNhấn phím bất kỳ để tiếp tục...");
-        scanner.nextLine(); // Đọc một dòng1 từ bàn phím, chờ người dùng nhấn Enter
+        scanner.nextLine(); // Đọc một dòng từ bàn phím, chờ người dùng nhấn Enter
         clearScreen();
     }
 
@@ -59,5 +90,4 @@ public static void start(){
         System.out.print("\033[H\033[2J"); // Xóa màn hình
         System.out.flush(); // Flush để đảm bảo màn hình được xóa ngay lập tức
     }
-
 }

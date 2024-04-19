@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/cpn/Documents/NetBeansProjects/JavaApplication2/src/model/Account.java</file>
-            <file>file:/C:/Users/cpn/Documents/NetBeansProjects/JavaApplication2/src/DAO/AccountDAOImpl.java</file>
-            <file>file:/C:/Users/cpn/Documents/NetBeansProjects/JavaApplication2/src/connect/DBContext.java</file>
-            <file>file:/C:/Users/cpn/Documents/NetBeansProjects/JavaApplication2/src/controller/DangNhap.java</file>
-            <file>file:/C:/Users/cpn/Documents/NetBeansProjects/JavaApplication2/src/DAO/AccountDAO.java</file>
-            <file>file:/C:/Users/cpn/Documents/NetBeansProjects/JavaApplication2/src/controller/DangKy.java</file>
-            <file>file:/C:/Users/cpn/Documents/NetBeansProjects/JavaApplication2/src/movie/main.java</file>
+            <file>file:/D:/new/JavaApplication2/src/controller/DangNhap.java</file>
+            <file>file:/D:/new/JavaApplication2/src/connect/DBContext.java</file>
+            <file>file:/D:/new/JavaApplication2/src/DAO/MovieDAO.java</file>
+            <file>file:/D:/new/JavaApplication2/src/movie/main.java</file>
+            <file>file:/D:/new/JavaApplication2/src/controller/MovieControl.java</file>
+            <file>file:/D:/new/JavaApplication2/src/model/Movie.java</file>
         </group>
     </open-files>
 </project-private>
