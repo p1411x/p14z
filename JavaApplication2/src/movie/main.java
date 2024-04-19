@@ -1,5 +1,6 @@
 package movie;
 
+import DAO.MovieDAOImpl;
 import controller.DangKy;
 import controller.DangNhap;
 import controller.MovieControl;
@@ -61,6 +62,8 @@ public class main {
         Scanner sc = new Scanner(System.in);
         System.out.println("1. Thêm phim");
         System.out.println("2. Xóa phim theo id ");
+        System.out.println("3.Tất cả các phim đang có");
+        System.out.println("4. Tìm kiếm theo id ");
         System.out.println("Nhập tùy chọn bạn muốn: ");
         int tuychon = sc.nextInt();
         switch (tuychon) {
@@ -72,6 +75,14 @@ public class main {
                 MovieControl movieControl = new MovieControl();
                 movieControl.deleteMovie();
                 break;
+            case 3 : // show tất cả phim
+                 MovieDAOImpl movieDAOImpl = new MovieDAOImpl();
+                
+                 movieDAOImpl.showAllMovie();
+                 break;
+            case 4 : // tìm kiếm phim theo 
+                MovieControl movieControl4 = new MovieControl();
+                movieControl4.searchMovieById();
             default:
                 System.out.println("Nhập sai tùy chọn, vui lòng nhập lại");
                 pressAnyKey();

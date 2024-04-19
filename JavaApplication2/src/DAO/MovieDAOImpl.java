@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Movie;
 
 public class MovieDAOImpl implements MovieDAO {
@@ -80,6 +82,7 @@ public class MovieDAOImpl implements MovieDAO {
 
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
+            
             rs = ps.executeQuery();
             while (rs.next()) {
                 if (idMovie.equals(rs.getString(1)) ) {
@@ -93,6 +96,37 @@ public class MovieDAOImpl implements MovieDAO {
 
         }
         return false;
+    }
+
+    @Override
+    public void showAllMovie() {
+       String sql = "SELECT * FROM Movie";
+            try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                System.out.println(new Movie(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    @Override
+    public void searchMovieById(String idMovie) {
+        String sql = "SELECT * FROM [dbo].[Movie] WHERE [idMovie] = ?";
+
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,idMovie);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                System.out.println(new Movie(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+            }
+        }  catch (Exception ex) {
+            Logger.getLogger(MovieDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     

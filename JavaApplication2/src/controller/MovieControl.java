@@ -45,4 +45,15 @@ public class MovieControl {
         }
         else System.out.println("Phim không tồn tại");
     }
+//    public void showAllMovie(){
+//         MovieDAOImpl movieDAOImpl = new MovieDAOImpl();
+//         movieDAOImpl.showAllMovie();
+//    }
+    public void searchMovieById(){
+        MovieDAOImpl movieDAOImpl1 = new MovieDAOImpl();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhập id phim");
+        String idMovie = sc.nextLine();
+         movieDAOImpl1.searchMovieById(idMovie);
+    }
 }

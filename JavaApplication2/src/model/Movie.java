@@ -30,6 +30,11 @@ public class Movie {
         this.director = director;
     }
 
+    @Override
+    public String toString() {
+        return "Movie{" + "idMovie=" + idMovie + ", nameMovie=" + nameMovie + ", priceMovie=" + priceMovie + ", idRoomMoive=" + idRoomMoive + ", director=" + director + '}';
+    }
+
     public void setIdMovie(String idMovie) {
         this.idMovie = idMovie;
     }
