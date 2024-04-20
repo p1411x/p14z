@@ -28,11 +28,11 @@ public class MovieControl {
         System.out.println("Nhà sáng tác :");
         String director = sc.nextLine();
         Movie movie = new Movie(idMovie, nameMovie, priceMovie, idRoomMovie, director);
-        if (!movieDAOImpl.CheckMovie(idMovie, nameMovie)) {
+        if (!movieDAOImpl.CheckMovie(idMovie, idRoomMovie)) {
             movieDAOImpl.addMovie(movie);
             System.out.println("Thêm phim thành công");
         }
-        else System.out.println("Phim đã tồn tại");
+        else System.out.println("Phim đã có sẵn");
     }
     public void deleteMovie(){
         MovieDAOImpl movieDAOImpl = new MovieDAOImpl();

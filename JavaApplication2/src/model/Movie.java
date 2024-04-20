@@ -14,7 +14,7 @@ public class Movie {
     private  String idMovie;
     private String nameMovie;
     private String priceMovie;
-    private String idRoomMoive;
+    private String idRoomMovie;
     private String director;
     //private float rateMovie;
     private static final Logger LOG = Logger.getLogger(Movie.class.getName());
@@ -22,17 +22,17 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(String idMovie, String nameMovie, String priceMovie, String idRoomMoive, String director) {
+    public Movie(String idMovie, String nameMovie, String priceMovie, String idRoomMovie, String director) {
         this.idMovie = idMovie;
         this.nameMovie = nameMovie;
         this.priceMovie = priceMovie;
-        this.idRoomMoive = idRoomMoive;
+        this.idRoomMovie = idRoomMovie;
         this.director = director;
     }
 
     @Override
     public String toString() {
-        return "Movie{" + "idMovie=" + idMovie + ", nameMovie=" + nameMovie + ", priceMovie=" + priceMovie + ", idRoomMoive=" + idRoomMoive + ", director=" + director + '}';
+        return "Movie{" + "idMovie=" + idMovie + ", nameMovie=" + nameMovie + ", priceMovie=" + priceMovie + ", idRoomMovie=" + idRoomMovie + ", director=" + director + '}';
     }
 
     public void setIdMovie(String idMovie) {
@@ -51,8 +51,8 @@ public class Movie {
         return priceMovie;
     }
 
-    public String getIdRoomMoive() {
-        return idRoomMoive;
+    public String getIdRoomMovie() {
+        return idRoomMovie;
     }
 
     public String getDirector() {
@@ -71,8 +71,8 @@ public class Movie {
         this.priceMovie = priceMovie;
     }
 
-    public void setIdRoomMoive(String idRoomMoive) {
-        this.idRoomMoive = idRoomMoive;
+    public void setIdRoomMovie(String idRoomMovie) {
+        this.idRoomMovie = idRoomMovie;
     }
 
     public void setDirector(String director) {

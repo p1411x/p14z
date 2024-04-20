@@ -10,7 +10,7 @@ import model.Movie;
  */
 public interface MovieDAO {
     public void addMovie(Movie movie);
-     public boolean CheckMovie(String idMovie ,String nameMovie);
+     public boolean CheckMovie(String idMovie ,String idRoomMovie);
      public void deleteMovieById(String idMovie);
      public boolean CheckMovie(String idMovie );
      public void showAllMovie();

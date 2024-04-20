@@ -26,7 +26,7 @@ public class MovieDAOImpl implements MovieDAO {
                 + "           ([idMovie]\n"
                 + "           ,[nameMovie]\n"
                 + "           ,[priceMovie]\n"
-                + "           ,[idRoomMoive]\n"
+                + "           ,[idRoomMovie]\n"
                 + "           ,[director])\n"
                 + "     VALUES (?,?,?,?,?)";
 
@@ -36,7 +36,7 @@ public class MovieDAOImpl implements MovieDAO {
             ps.setString(1, movie.getIdMovie());
             ps.setString(2, movie.getNameMovie());
             ps.setString(3, movie.getPriceMovie());
-            ps.setString(4, movie.getIdRoomMoive());
+            ps.setString(4, movie.getIdRoomMovie());
             ps.setString(5, movie.getDirector());
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -56,15 +56,16 @@ public class MovieDAOImpl implements MovieDAO {
         }
     }
 
-    public boolean CheckMovie(String idMovie, String nameMovie) {
-        String sql = "SELECT * FROM Movie WHERE idMovie ='" + idMovie + "'and nameMovie='" + nameMovie + "'";
+    @Override
+    public boolean CheckMovie(String idMovie, String idRoomMovie) {
+        String sql = "SELECT * FROM Movie WHERE idMovie ='" + idMovie + "'or idRoomMovie='" + idRoomMovie + "'";
         try {
 
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                if (idMovie.equals(rs.getString(1)) || nameMovie.equals(rs.getString(2))) {
+                if (idMovie.equals(rs.getString(1)) || idRoomMovie.equals(rs.getString(2))) {
 
                     return true;
                 }
