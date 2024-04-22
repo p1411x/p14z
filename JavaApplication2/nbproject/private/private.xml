@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/new/JavaApplication2/src/DAO/MovieDAOImpl.java</file>
-            <file>file:/D:/new/JavaApplication2/src/DAO/MovieDAO.java</file>
+            <file>file:/D:/new/JavaApplication2/src/DAO/BankDAOImpl.java</file>
+            <file>file:/D:/new/JavaApplication2/src/DAO/BankDAO.java</file>
+            <file>file:/D:/new/JavaApplication2/src/controller/BankControl.java</file>
             <file>file:/D:/new/JavaApplication2/src/movie/main.java</file>
             <file>file:/D:/new/JavaApplication2/src/controller/MovieControl.java</file>
-            <file>file:/D:/new/JavaApplication2/src/model/Movie.java</file>
+            <file>file:/D:/new/JavaApplication2/test/test3.java</file>
+            <file>file:/D:/new/JavaApplication2/src/DAO/MaGiamGiaDAOImpl.java</file>
         </group>
     </open-files>
 </project-private>

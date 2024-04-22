@@ -24,22 +24,22 @@ public class DanhGiaControl {
         String rate = sc.nextLine();
   
         DanhGia danhGia = new DanhGia(id, binhLuan, rate);
-        if(!danhGiaDAOImpl.checkDanhGia(id)){
+       // if(!danhGiaDAOImpl.checkDanhGia(id)){
             System.out.println("thêm đánh giá thành công");
         danhGiaDAOImpl.addDanhGia(danhGia);
-        }
-        else System.out.println("Trùng id mới bạn nhập id khác");
+       // }
+        //else System.out.println("Trùng id mới bạn nhập id khác");
     }
     public void deleteDanhGiaById(){
         DanhGiaDAOImpl danhGiaDAOImpl1 = new DanhGiaDAOImpl();
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập id muốn xóa");
         String id = sc.nextLine();
-        if(danhGiaDAOImpl1.checkDanhGia(id)){
+        //if(danhGiaDAOImpl1.checkDanhGia(id)){
             System.out.println("Xóa thành công");
         danhGiaDAOImpl1.deleteDanhGiaById(id);
-        }
-        else System.out.println("Đánh giá trên không tồn tại");
+        //}
+       // else System.out.println("Đánh giá trên không tồn tại");
     }
     public void updateDanhGia(){
         DanhGiaDAOImpl danhGiaDAOImpl2 = new DanhGiaDAOImpl();
@@ -52,10 +52,11 @@ public class DanhGiaControl {
         String rate = sc.nextLine();
   
         DanhGia danhGia1 = new DanhGia(id, binhLuan, rate);
-         if(danhGiaDAOImpl2.checkDanhGia(id)){
-        danhGiaDAOImpl2.updateDanhGia(danhGia1);
-         }
-         else System.out.println("Không có id đánh giá trên");
+         //if(danhGiaDAOImpl2.checkDanhGia(id)){
+         System.out.println("Không có đánh giá trên");
+         danhGiaDAOImpl2.updateDanhGia(danhGia1);
+         //}
+       //  else System.out.println("Không có id đánh giá trên");
     }
     public void showAllDanhGia(){
         DanhGiaDAOImpl danhGiaDAOImpl3 = new DanhGiaDAOImpl();

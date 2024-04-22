@@ -21,7 +21,7 @@ public class DanhGiaDAOImpl implements DanhGiaDAO{
     ResultSet rs = null;
     public boolean checkDanhGia(String id) {
 
-        String sql = "SELECT * FROM Movie WHERE id ='" + id + "'";
+        String sql = "SELECT * FROM DanhGia WHERE id ='" +id+ "'";
         try {
 
             conn = new DBContext().getConnection();//mo ket noi voi sql
@@ -29,6 +29,7 @@ public class DanhGiaDAOImpl implements DanhGiaDAO{
             rs = ps.executeQuery();
             while (rs.next()) {
                 if (id.equals(rs.getString(1))) {
+                    
                     return true;
                 }
 
@@ -103,7 +104,7 @@ public class DanhGiaDAOImpl implements DanhGiaDAO{
          String sql = "UPDATE [dbo].[DanhGia]\n"
                 + "  SET     "
                 + "           [binhLuan] = ?\n"
-                + "            [rate]    =?\n"
+                + "            ,[rate]    =?\n"
                 + "    Where [id] = ?";
               try {
            // conn = new DBContext().getConnection();

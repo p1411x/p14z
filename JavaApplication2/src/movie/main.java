@@ -1,38 +1,61 @@
 package movie;
 
 import DAO.MovieDAOImpl;
+import controller.BankControl;
 import controller.DangKy;
 import controller.DangNhap;
 import controller.DanhGiaControl;
 import controller.DrinkControl;
+import controller.MaGiamGiaControl;
 import controller.MovieControl;
 import controller.TicketControl;
 import java.util.Scanner;
 import model.Movie;
 
 public class main {
-
-    public static void main(String[] args) {
+    //private static boolean checkLogin = false;
+    public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         while (true) {
-            System.out.println("Chào các bạn");
+            System.out.println("Chào các bạn đến với hệ thống của chúng mình : ");
+            System.out.println("");
             System.out.println("1. Đăng ký");
             System.out.println("2. Đăng nhập");
             System.out.println("3. Kết thúc chương trình");
             System.out.println("Nhập tùy chọn bạn muốn: ");
             int tuychon = sc.nextInt();
+           
             switch (tuychon) {
                 case 1: // đăng ký
+                  //   if(!checkLogin){
                     DangKy dangKy = new DangKy();
-                    dangKy.DangKy();
-
+                    
+                    if(dangKy.DangKy()){
+                    start();
                     pressAnyKey();
+                    }
+                    else {
+                        System.out.println("Mời bạn đăng ký lại");
+                        pressAnyKey();
+                    }
+                    
+//                    checkLogin = true;
+//                    }
+//                        else{
+//                        checkLogin = false;
+//                    }
                     break;
                 case 2: // đăng nhập
                     DangNhap dangNhap = new DangNhap();
-                    dangNhap.DangNhap();
+                    if(dangNhap.DangNhap()){                                            
                     start();
                     pressAnyKey();
+                  //  checkLogin = true;
+                    }
+                    else{
+                        System.out.println("Mời bạn đăng nhập lại");
+                        pressAnyKey();
+                    }
                     break;
                 case 3:
                     System.exit(0);
@@ -44,27 +67,55 @@ public class main {
         }
     }
 
-    public static void start() {
+    public static void start() throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập tùy chọn bạn muốn: ");
         System.out.println("1. Xem danh sách chức năng phim");
         System.out.println("2. Xem danh sách chức năng của đồ uống");
         System.out.println("3. Xem danh sách chức năng của vé");
         System.out.println("4. Đánh giá ");
+        System.out.println("5. Mã giảm giá");
+        System.out.println("6.Đề xuất phim");
+        System.out.println("7. Tài khoản thanh toán (Nạp rút tiền) : ");
+        System.out.println("8. Đăng Xuất");
         int tuychon = sc.nextInt();
+       // boolean check = true;
         switch (tuychon) {
             case 1:
                 caseMovie();
+               // pressAnyKey();
                 break;
             case 2:
                 caseDrink();
+                //pressAnyKey();
                 break;
             case 3:
                 caseTicket();
+              //  pressAnyKey();
                 break;
             case 4:
                 caseDanhGia();
+             //   pressAnyKey();
                 break;
+            case 5 :
+                caseMaGiamGia();
+               // pressAnyKey();
+                break;
+            case 6 :
+                 MovieControl movieControl7 = new MovieControl();
+                 movieControl7.deXuatMovie();
+                // pressAnyKey();
+                 break;
+            case 7:
+                caseBank();
+                break;
+            case 8: // đăng xuất
+                   // checkLogin = false;
+                   // check = false;
+                    System.out.println("Đang đăng xuất...");
+                   // pressAnyKey();
+            
+                    break;
             
 //            case :
 //                System.exit(0);
@@ -74,33 +125,120 @@ public class main {
                 break;
         }
     }
-
-    public static void caseDanhGia() {
+    public static void caseMaGiamGia() throws Exception{
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1. thêm mã giảm giá ");
+        System.out.println("2. Xóa mã đánh giá ");
+        System.out.println("3. Sửa số lượng mã giảm giá ");
+        System.out.println("4. Hiển thị tất cả các mã giảm giá");
+        System.out.println("5. Quay lại");
+        System.out.println("Nhập chức năng bạn muốn");
+        int tuychon = sc.nextInt();
+        switch (tuychon) {
+            case 1:
+                MaGiamGiaControl maGiamGiaControl = new MaGiamGiaControl();
+                maGiamGiaControl.addMaGiamGia();
+                 pressAnyKey();
+                start();
+                break;
+            case 2 :
+                MaGiamGiaControl maGiamGiaControl2= new MaGiamGiaControl();
+                maGiamGiaControl2.deleteMaGiamGia();
+                 pressAnyKey();
+                start();
+                break;
+            case 3 :
+                MaGiamGiaControl maGiamGiaControl3 = new MaGiamGiaControl();
+                maGiamGiaControl3.updateMaGiamGia();
+                 pressAnyKey();
+                start();
+                break;
+            case 4:
+                MaGiamGiaControl maGiamGiaControl4 = new MaGiamGiaControl();
+                maGiamGiaControl4.addMaGiamGia();
+                 pressAnyKey();
+                start();
+                break;
+            case 5:
+                start();
+                break;
+            default:
+                System.out.println("Nhập sai tùy chọn, vui lòng nhập lại");
+                caseMaGiamGia();
+                pressAnyKey();
+                break;
+        }
+    }
+    
+    public static void caseBank() throws Exception{
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1. Nạp tiền ");
+        System.out.println("2. Rút tiền");
+        System.out.println("3. Quay lại");
+        System.out.println("Nhập chức năng bạn muốn");
+        int tuychon = sc.nextInt();
+        switch (tuychon) {
+            case 1:
+                BankControl bankControl = new BankControl();
+                bankControl.NapTien();
+                 pressAnyKey();
+                start();
+                break;
+            case 2 :
+                BankControl bankControl2= new BankControl();
+                bankControl2.RutTien();
+                 pressAnyKey();
+                start();
+                break;
+            
+            case 3:
+                start();
+                break;
+            default:
+                System.out.println("Nhập sai tùy chọn, vui lòng nhập lại");
+                caseMaGiamGia();
+                pressAnyKey();
+                break;
+        }
+    }
+    
+    public static void caseDanhGia() throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.println("1. Đánh giá ");
         System.out.println("2. Xóa đánh giá ");
         System.out.println("3. Sửa đánh giá ");
         System.out.println("4. Hiển thị tất cả các đánh giá");
+        System.out.println("5 .Quay lại");
         System.out.println("Nhập chức năng bạn muốn");
         int tuychon = sc.nextInt();
         switch (tuychon) {
             case 1 :
                 DanhGiaControl danhGiaControl = new DanhGiaControl();
                 danhGiaControl.addDanhGia();
+                 pressAnyKey();
+                start();
                 break;
             case 2 :
                 DanhGiaControl danhGiaControl2 = new  DanhGiaControl();
                 danhGiaControl2.deleteDanhGiaById();
+                 pressAnyKey();
+                start();
                 break;
             case 3 :
                 DanhGiaControl danhGiaControl3 = new DanhGiaControl();
                 danhGiaControl3.updateDanhGia();
+                 pressAnyKey();
+                start();
                 break;
             case 4 :
                 DanhGiaControl danhGiaControl4 = new DanhGiaControl();
                 danhGiaControl4.showAllDanhGia();
+                 pressAnyKey();
+                start();
                 break;
-                
+            case 5 :
+                start();
+                break;
             default:
                 System.out.println("Nhập sai tùy chọn, vui lòng nhập lại");
                 pressAnyKey();
@@ -108,22 +246,29 @@ public class main {
         }
     }
 
-    public static void caseTicket() {
+    public static void caseTicket() throws Exception {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("1. Đặt vé");
         System.out.println("2. Xem các vé đã được mua");
-
+        System.out.println("3. Quay lại");
         System.out.println("Nhập chức năng bạn muốn");
         int tuychon = sc.nextInt();
         switch (tuychon) {
             case 1: // đặt vé
                 TicketControl ticketControl = new TicketControl();
                 ticketControl.DatVe();
+                 pressAnyKey();
+                start(); 
                 break;
             case 2: //crud các vé đã đặt
                 TicketControl ticketControl2 = new TicketControl();
                 ticketControl2.showAllTicket();
+                 pressAnyKey();
+                start();
+                break;
+            case 3 :
+                start();
                 break;
             default:
                 System.out.println("Nhập sai tùy chọn, vui lòng nhập lại");
@@ -133,34 +278,44 @@ public class main {
 
     }
 
-    public static void caseDrink() {
+    public static void caseDrink() throws Exception {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("1.Thêm Đồ uống ");
         System.out.println("2.Xóa Đồ uống theo tên ");
         System.out.println("3. Tất cả đồ uống hiện có ");
         System.out.println("4. Cập nhật đồ uống ");
-
+        System.err.println("5. Quay lại");
         System.out.println("Nhập chức năng bạn muốn");
         int tuychon = sc.nextInt();
         switch (tuychon) {
             case 1: // thêm nước
                 DrinkControl drinkControl = new DrinkControl();
                 drinkControl.addDrink();
+                 pressAnyKey();
+                 start();
                 break;
             case 2: // xóa nước
                 DrinkControl drinkControl2 = new DrinkControl();
                 drinkControl2.deleteDrink();
+                 pressAnyKey();
+                 start();
                 break;
             case 3: // tất cả nước đang có
                 DrinkControl drinkControl3 = new DrinkControl();
                 drinkControl3.showAllDrink();
+                 pressAnyKey();
+                 start();
                 break;
             case 4: // cập nhật nước
                 DrinkControl drinkControl4 = new DrinkControl();
                 drinkControl4.updateDrink();
+                 pressAnyKey();
+                 start();
                 break;
-
+            case 5 :
+                start();
+                break;
 //           case :
 //                    System.exit(0);
             default:
@@ -170,30 +325,42 @@ public class main {
         }
     }
 
-    public static void caseMovie() {
+    public static void caseMovie() throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.println("1. Thêm phim");
         System.out.println("2. Xóa phim theo id ");
         System.out.println("3.Tất cả các phim đang có");
         System.out.println("4. Tìm kiếm theo id ");
+        System.out.println("5. Quay lại");
         System.out.println("Nhập tùy chọn bạn muốn: ");
         int tuychon = sc.nextInt();
         switch (tuychon) {
             case 1: // thêm phim
                 MovieControl moviecontrol = new MovieControl();
                 moviecontrol.addMovie();
+                 pressAnyKey();
+                start();
                 break;
             case 2:// xóa phim
                 MovieControl movieControl = new MovieControl();
                 movieControl.deleteMovie();
+                 pressAnyKey();
+                 start();
                 break;
             case 3: // show tất cả phim
                 MovieDAOImpl movieDAOImpl = new MovieDAOImpl();
                 movieDAOImpl.showAllMovie();
+                 pressAnyKey();
+                 start();
                 break;
             case 4: // tìm kiếm phim theo id
                 MovieControl movieControl4 = new MovieControl();
                 movieControl4.searchMovieById();
+                 pressAnyKey();
+                start();
+                break;
+            case 5 :
+                start();
                 break;
             default:
                 System.out.println("Nhập sai tùy chọn, vui lòng nhập lại");

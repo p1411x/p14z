@@ -44,6 +44,7 @@ public class MovieDAOImpl implements MovieDAO {
         }
     }
 
+    @Override
     public void deleteMovieById(String idMovie) {
         String sql = "DELETE FROM [dbo].[Movie] WHERE [idMovie] = ?";
 
@@ -124,6 +125,22 @@ public class MovieDAOImpl implements MovieDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 System.out.println(new Movie(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+            }
+        }  catch (Exception ex) {
+            Logger.getLogger(MovieDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void deXuat() {
+         String sql = "SELECT top(1) * FROM [dbo].[Movie] order by [idMovie] desc ";
+         try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+          //  ps.setString(1,idMovie);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                System.out.println("Tên phim : "+ rs.getString("nameMovie"));
             }
         }  catch (Exception ex) {
             Logger.getLogger(MovieDAOImpl.class.getName()).log(Level.SEVERE, null, ex);

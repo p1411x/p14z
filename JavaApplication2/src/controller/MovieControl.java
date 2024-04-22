@@ -32,7 +32,7 @@ public class MovieControl {
             movieDAOImpl.addMovie(movie);
             System.out.println("Thêm phim thành công");
         }
-        else System.out.println("Phim đã có sẵn");
+        else System.out.println("Trùng  id  mời bạn nhập lại :");
     }
     public void deleteMovie(){
         MovieDAOImpl movieDAOImpl = new MovieDAOImpl();
@@ -45,15 +45,20 @@ public class MovieControl {
         }
         else System.out.println("Phim không tồn tại");
     }
-//    public void showAllMovie(){
-//         MovieDAOImpl movieDAOImpl = new MovieDAOImpl();
-//         movieDAOImpl.showAllMovie();
-//    }
+    public void showAllMovie(){
+         MovieDAOImpl movieDAOImpl = new MovieDAOImpl();
+         movieDAOImpl.showAllMovie();
+    }
     public void searchMovieById(){
         MovieDAOImpl movieDAOImpl1 = new MovieDAOImpl();
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập id phim");
         String idMovie = sc.nextLine();
          movieDAOImpl1.searchMovieById(idMovie);
+    }
+    public void deXuatMovie(){
+        MovieDAOImpl movieDAOImp7 = new MovieDAOImpl();
+        System.out.println("Chúng tôi khuyên bạn nên xem phim này : ");
+        movieDAOImp7.deXuat();
     }
 }
