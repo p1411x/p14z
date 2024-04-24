@@ -16,12 +16,38 @@ public class Movie {
     private String priceMovie;
     private String idRoomMovie;
     private String director;
+    private String url;
     //private float rateMovie;
     private static final Logger LOG = Logger.getLogger(Movie.class.getName());
 
     public Movie() {
     }
 
+    public Movie(String idMovie, String nameMovie, String priceMovie, String idRoomMovie, String director, String url) {
+        this.idMovie = idMovie;
+        this.nameMovie = nameMovie;
+        this.priceMovie = priceMovie;
+        this.idRoomMovie = idRoomMovie;
+        this.director = director;
+        this.url = url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+    
+//     public Movie( String nameMovie, String priceMovie, String idRoomMovie, String director) {
+//        this.idMovie = idMovie;
+//        this.nameMovie = nameMovie;
+//        this.priceMovie = priceMovie;
+//        this.idRoomMovie = idRoomMovie;
+//        this.director = director;
+//    }
+//     
     public Movie(String idMovie, String nameMovie, String priceMovie, String idRoomMovie, String director) {
         this.idMovie = idMovie;
         this.nameMovie = nameMovie;

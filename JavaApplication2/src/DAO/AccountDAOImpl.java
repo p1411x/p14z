@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import model.Account;
 
@@ -59,11 +61,12 @@ public class AccountDAOImpl implements AccountDAO {
             }
 
         } catch (Exception ex) {
-
+            Logger.getLogger(MovieDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
 
+    
     @Override
     public void AddAccount(Account acc) {
         String sql = "INSERT INTO [dbo].[Account]\n"
@@ -77,7 +80,7 @@ public class AccountDAOImpl implements AccountDAO {
             ps.setString(2, acc.getPassWord()) ;
             ps.executeUpdate();
         } catch (SQLException e) {
-
+            
         }
     }
 

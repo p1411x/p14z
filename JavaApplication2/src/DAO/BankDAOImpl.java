@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -27,15 +27,16 @@ public class BankDAOImpl implements BankDAO {
     public void NapTien(Bank bank)  {
         String sql = "INSERT INTO [dbo].[Bank]\n"
                 + "           ([userName]\n"
-                //   + "             , []\n"
+                   + "             , [matKhau]\n"
                 + "           ,[balance])\n"
-                + "     VALUES (?,?)";
+                + "     VALUES (?,?,?)";
         try {
  
              conn = new DBContext().getConnection();
              ps = conn.prepareStatement(sql);
             ps.setString(1, bank.getUserName());
-            ps.setInt(2, bank.getBalance());
+            ps.setString(2,bank.getMatKhau());
+            ps.setInt(3, bank.getBalance());
 
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -51,7 +52,7 @@ public class BankDAOImpl implements BankDAO {
     try {
         conn = new DBContext().getConnection();
         
-        // Thực hiện truy vấn SQL để lấy giá trị balance
+        // lấy giá trị balance
         ps = conn.prepareStatement(selectSql);
         ps.setString(1, userName);
         rs = ps.executeQuery();
@@ -59,15 +60,15 @@ public class BankDAOImpl implements BankDAO {
         if (rs.next()) {
             int balance = rs.getInt("balance");
             int newBalance = balance - temp;
-            if(newBalance >0){
-            // Thực hiện truy vấn SQL để cập nhật số dư mới
+            if(newBalance >=0){
+            //để cập nhật số dư mới
             ps = conn.prepareStatement(updateSql);
             ps.setInt(1, newBalance);
             ps.setString(2, userName);
             ps.executeUpdate();
-                System.out.println("Rút tiền thành công");
+                System.out.println("Thành công");
             }
-            else System.out.println("Không thể rút tiền vì số dư không đủ");
+            else System.out.println(" Số dư không đủ");
         }
         
         // Đóng tất cả các tài nguyên
@@ -123,7 +124,47 @@ public class BankDAOImpl implements BankDAO {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                if (userName.equals(rs.getString("userName"))) {
+                if (userName.equals(rs.getString("userName"))) {                    
+                    return true;
+                }
+
+            }
+        //conn.close();
+        } catch (Exception ex) {
+        }
+        
+        return false;
+    }
+       public boolean CheckTaiKhoanRutTien(String userName,String matKhau) {
+
+        String sql = "SELECT * FROM Bank WHERE userName ='" +userName+ "'and matKhau='" +matKhau+"'" ;
+        try {
+
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                if (userName.equals(rs.getString("userName"))   && matKhau.equals(rs.getString("matKhau"))) {                    
+                    return true;
+                }
+                else System.out.println("Mật khẩu sai");
+            }
+        //conn.close();
+        } catch (Exception ex) {
+        }
+        
+        return false;
+    }
+    public boolean CheckMatKhau(String matKhau) {
+
+        String sql = "SELECT * FROM Bank WHERE matKhau ='" +matKhau+ "'";
+        try {
+
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                if (matKhau.equals(rs.getString("matKhau"))) {     
                     
                     return true;
                 }

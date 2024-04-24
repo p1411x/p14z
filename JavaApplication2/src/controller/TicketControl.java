@@ -31,7 +31,7 @@ public class TicketControl {
         Tickets tickets = new Tickets(movie, seat , idMovie);
         
         if(ticketDAOImpl.KiemTraVe(idMovie, seat)){
-            System.out.println("Vé đã được đặt hôặc không có phim ");
+            System.out.println("Vé đã được đặt hoặc không có phim ");
         }
         else {
             ticketDAOImpl.DatVe(tickets);

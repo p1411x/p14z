@@ -36,6 +36,7 @@ public class MovieDAOImpl implements MovieDAO {
             ps.setString(1, movie.getIdMovie());
             ps.setString(2, movie.getNameMovie());
             ps.setString(3, movie.getPriceMovie());
+            
             ps.setString(4, movie.getIdRoomMovie());
             ps.setString(5, movie.getDirector());
             ps.executeUpdate();
@@ -53,7 +54,7 @@ public class MovieDAOImpl implements MovieDAO {
             ps.setString(1,idMovie);
             ps.executeUpdate();
         } catch (SQLException e) {
-
+            
         }
     }
 
@@ -73,11 +74,12 @@ public class MovieDAOImpl implements MovieDAO {
 
             }
 
-        } catch (Exception ex) {
-
+        } catch (Exception ex) {    
+            ex.printStackTrace();
         }
         return false;
     }
+    @Override
     public boolean CheckMovie(String idMovie) {
         String sql = "SELECT * FROM Movie WHERE idMovie ='" + idMovie +"'";
         try {
@@ -111,6 +113,7 @@ public class MovieDAOImpl implements MovieDAO {
                 System.out.println(new Movie(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
             }
         } catch (Exception e) {
+          //  Logger.getLogger(MovieDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

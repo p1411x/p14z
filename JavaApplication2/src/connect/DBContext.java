@@ -10,8 +10,8 @@ public class DBContext {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         return DriverManager.getConnection(url, userID, password);
     }   
-   
-    private final String serverName = "P14\\SQLEXPRESS";
+   // 
+    private final String serverName = "P14\\SQLEXPRESS"; // ko thể thay đổi khi nó đã được khơi tạo
     private final String dbName = "movie";
     private final String portNumber = "1433";
     private final String instance="";

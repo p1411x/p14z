@@ -20,7 +20,7 @@ public class DrinkDAOImpl implements DrinkDAO {
     @Override
     public boolean checkDrink(String nameDrink) {
 
-        String sql = "SELECT * FROM Movie WHERE idMovie ='" + nameDrink + "'";
+        String sql = "SELECT * FROM Drink WHERE nameDrink ='" + nameDrink + "'";
         try {
 
             conn = new DBContext().getConnection();//mo ket noi voi sql

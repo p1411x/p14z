@@ -1,6 +1,8 @@
 
 import controller.BankControl;
 import controller.MovieControl;
+import controller.ThanhToanControl;
+import controller.TicketControl;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,7 +15,14 @@ import controller.MovieControl;
  */
 public class test3 {
     public static void main(String[] args) throws Exception  {
-        BankControl bankControl1 = new BankControl();
-        bankControl1.RutTien();
+//        TicketControl ticketControl = new TicketControl();
+//                ticketControl.DatVe();
+//BankControl bankControl2= new BankControl();
+//                bankControl2.RutTien();
+// BankControl bankControl = new BankControl();
+//                bankControl.NapTien();
+
+        ThanhToanControl thanhToanControl = new ThanhToanControl();
+         thanhToanControl.ThanhToan();
     }
 }

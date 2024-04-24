@@ -8,6 +8,7 @@ import controller.DanhGiaControl;
 import controller.DrinkControl;
 import controller.MaGiamGiaControl;
 import controller.MovieControl;
+import controller.ThanhToanControl;
 import controller.TicketControl;
 import java.util.Scanner;
 import model.Movie;
@@ -69,15 +70,17 @@ public class main {
 
     public static void start() throws Exception {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nhập tùy chọn bạn muốn: ");
+        System.out.println("---------------------MENU--------------------");
         System.out.println("1. Xem danh sách chức năng phim");
         System.out.println("2. Xem danh sách chức năng của đồ uống");
         System.out.println("3. Xem danh sách chức năng của vé");
         System.out.println("4. Đánh giá ");
         System.out.println("5. Mã giảm giá");
         System.out.println("6.Đề xuất phim");
-        System.out.println("7. Tài khoản thanh toán (Nạp rút tiền) : ");
-        System.out.println("8. Đăng Xuất");
+        System.out.println("7. Tài khoản thanh toán (Nạp rút tiền)");
+        System.out.println("8. Thanh Toán");
+        System.out.println("9. Đăng Xuất");
+        System.out.println("Nhập tùy chọn bạn muốn: ");
         int tuychon = sc.nextInt();
        // boolean check = true;
         switch (tuychon) {
@@ -109,7 +112,10 @@ public class main {
             case 7:
                 caseBank();
                 break;
-            case 8: // đăng xuất
+            case 8 :
+                 ThanhToanControl thanhToanControl = new ThanhToanControl();
+                 thanhToanControl.ThanhToan();
+            case 9: // đăng xuất
                    // checkLogin = false;
                    // check = false;
                     System.out.println("Đang đăng xuất...");
@@ -193,10 +199,9 @@ public class main {
             
             case 3:
                 start();
-                break;
+                break; 
             default:
-                System.out.println("Nhập sai tùy chọn, vui lòng nhập lại");
-                caseMaGiamGia();
+                System.out.println("Nhập sai tùy chọn, vui lòng nhập lại");                
                 pressAnyKey();
                 break;
         }
@@ -261,7 +266,7 @@ public class main {
                  pressAnyKey();
                 start(); 
                 break;
-            case 2: //crud các vé đã đặt
+            case 2: // các vé đã đặt
                 TicketControl ticketControl2 = new TicketControl();
                 ticketControl2.showAllTicket();
                  pressAnyKey();
@@ -304,8 +309,8 @@ public class main {
             case 3: // tất cả nước đang có
                 DrinkControl drinkControl3 = new DrinkControl();
                 drinkControl3.showAllDrink();
-                 pressAnyKey();
-                 start();
+                pressAnyKey();
+                start();
                 break;
             case 4: // cập nhật nước
                 DrinkControl drinkControl4 = new DrinkControl();
@@ -371,13 +376,13 @@ public class main {
 
     public static void pressAnyKey() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\n\nNhấn phím bất kỳ để tiếp tục...");
+        System.out.println("\n\nNhấn phím số kỳ để tiếp tục...");
         scanner.nextLine(); // Đọc một dòng từ bàn phím, chờ người dùng nhấn Enter
-        clearScreen();
+   //     clearScreen();
     }
 
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J"); // Xóa màn hình
-        System.out.flush(); // Flush để đảm bảo màn hình được xóa ngay lập tức
-    }
+//    public static void clearScreen() {
+//        System.out.print("\033[H\033[2J"); // Xóa màn hình
+//        System.out.flush(); // Flush để đảm bảo màn hình được xóa ngay lập tức
+//    }
 }

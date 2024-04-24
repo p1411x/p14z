@@ -44,7 +44,7 @@ public class DrinkControl {
             System.out.println("Đồ uống đã được xóa ");
         }
         else{
-            drinkDAOImpl1.deleteDrink(nameDrink);
+           // drinkDAOImpl1.deleteDrink(nameDrink);
             System.out.println("Không có đồ uống này");
         }
     }

@@ -28,7 +28,7 @@ public class MovieControl {
         System.out.println("Nhà sáng tác :");
         String director = sc.nextLine();
         Movie movie = new Movie(idMovie, nameMovie, priceMovie, idRoomMovie, director);
-        if (!movieDAOImpl.CheckMovie(idMovie, idRoomMovie)) {
+        if ( ! movieDAOImpl.CheckMovie(idMovie, idRoomMovie)) {
             movieDAOImpl.addMovie(movie);
             System.out.println("Thêm phim thành công");
         }

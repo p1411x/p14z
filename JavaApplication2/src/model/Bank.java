@@ -10,9 +10,24 @@ package model;
  */
 public class Bank {
     private String userName;
+    private String matKhau;
     private int balance;
 
     public Bank() {
+    }
+
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
+    }
+
+    public Bank(String userName, String matKhau, int balance) {
+        this.userName = userName;
+        this.matKhau = matKhau;
+        this.balance = balance;
+    }
+
+    public String getMatKhau() {
+        return matKhau;
     }
 
     public Bank(String userName, int balance) {
