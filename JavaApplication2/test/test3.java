@@ -15,14 +15,7 @@ import controller.TicketControl;
  */
 public class test3 {
     public static void main(String[] args) throws Exception  {
-//        TicketControl ticketControl = new TicketControl();
-//                ticketControl.DatVe();
-//BankControl bankControl2= new BankControl();
-//                bankControl2.RutTien();
-// BankControl bankControl = new BankControl();
-//                bankControl.NapTien();
-
-        ThanhToanControl thanhToanControl = new ThanhToanControl();
-         thanhToanControl.ThanhToan();
+        TicketControl ticketControl = new TicketControl();
+                ticketControl.DatVe();
     }
 }

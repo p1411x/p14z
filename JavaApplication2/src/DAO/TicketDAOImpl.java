@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 import model.Movie;
 import model.Tickets;
 
@@ -56,15 +57,21 @@ public class TicketDAOImpl implements TicketDAO{
                 + "           ([movie]\n"
                 + "             , [seat]\n"
                 + "           ,[idMovie]\n"
-                 + "           ,[isPresent])\n"
+                + "           ,[isPresent])\n"
+        //         + "           ,[maVe])\n"
                 + "     VALUES (?,?,?,?)";
          try {
-            //conn = new DBContext().getConnection();
+            conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, tickets.getMovie().getNameMovie());
             ps.setString(2, tickets.getSeat());
             ps.setString(3, tickets.getIdMovie());
             ps.setBoolean(4, false);
+            
+//            Random generator = new Random(); 
+//            Integer value =generator.nextInt(1000000) +1 ;
+//            ps.setInt(5 , value);
+            
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -92,6 +99,7 @@ public class TicketDAOImpl implements TicketDAO{
         }
         return null;
     }
+    
     public Movie getPriceMovie(String idMovie) {
        String sql="SELECT priceMovie FROM Movie WHERE idMovie ='"+idMovie+"'" ;
        
@@ -112,6 +120,7 @@ public class TicketDAOImpl implements TicketDAO{
     }
     
     
+    
     public void showAllTicket() {
         
        // ticketDAOImpl.getNameMovie(idMovie).getNameMovie()
@@ -124,7 +133,8 @@ public class TicketDAOImpl implements TicketDAO{
             while(rs.next()){
                 Movie movie = new Movie();
                 movie.setNameMovie(ticketDAOImpl.getNameMovie(rs.getString("idMovie")).getNameMovie());
-                System.out.println(new Tickets( movie , rs.getString("seat"),rs.getString("idMovie")));
+                System.out.println(new Tickets( movie , rs.getString("seat"),
+                        rs.getString("idMovie"),rs.getBoolean("isPresent") ));
             }
         } catch (Exception e) {
              e.printStackTrace();
@@ -152,4 +162,18 @@ public class TicketDAOImpl implements TicketDAO{
         }
     
     }
+     public void HuyVe(String seat,String idMovie)  {
+        String sql = "DELETE FROM [dbo].[Tickets] WHERE [seat] = ? and [idMovie]= ? ";
+
+        try {
+            conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,seat);
+            ps.setString(2,idMovie);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+  
 }

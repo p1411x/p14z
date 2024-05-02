@@ -11,18 +11,14 @@ import java.util.*;
     
 public class DangNhap {
     AccountDAOImpl accountDAOImpl = new AccountDAOImpl();
-    public boolean DangNhap () {
-         Scanner sc = new Scanner(System.in);
-         System.out.println("Nhập tài khoản :");
-         String userName = sc.nextLine();
-         System.out.println("Nhập mật khẩu : ");
-         String passWord = sc.nextLine();
+    public boolean DangNhap (String userName,String passWord) {
+         
          if(accountDAOImpl.CheckAccount(userName,passWord)){
-             System.out.println("Đăng nhập thành công");
+            // System.out.println("Đăng nhập thành công");
              return true;
          }
           else {
-             System.out.println("Tài khoản đăng nhập không chính xác");
+             System.out.println("Tài khoản hoặc mật khẩu không chính xác");
              
          }
         return false;

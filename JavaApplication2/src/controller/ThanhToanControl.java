@@ -6,6 +6,7 @@ package controller;
 
 import DAO.BankDAOImpl;
 import DAO.MovieDAOImpl;
+import DAO.ThanhToanDAOImpl;
 import DAO.TicketDAOImpl;
 import java.util.Scanner;
 import model.Movie;
@@ -29,29 +30,31 @@ public class ThanhToanControl {
 
             TicketDAOImpl ticketDAOImpl = new TicketDAOImpl();
 
-            System.out.println("Nhập ghế bạn muốn thanh toán");       ///update chuyển thành dựa vào mã vé 
-            String seat = sc.nextLine();                               ///
-            System.out.println("Nhập id phim bạn muốn thanh tooán");   ///dựa vào mã vé lấy ra idMovie
-            String idMovie = sc.nextLine();                            // 
-            if (ticketDAOImpl.KiemTraVe(idMovie, seat)) {
+            System.out.println("Nhập ghế bạn muốn thanh toán");
+            String seat = sc.nextLine();
+            System.out.println("Nhập id phim bạn muốn thanh tooán");
+            String idMovie = sc.nextLine();
+            ThanhToanDAOImpl thanhToanDAOImpl = new ThanhToanDAOImpl();
+            if (!thanhToanDAOImpl.checkTinhTrangThanhToan(seat, idMovie)) {
 
-                movie.setPriceMovie(ticketDAOImpl.getPriceMovie(idMovie).getPriceMovie());
-                String k = movie.getPriceMovie();
-                System.out.println("giá của vé là : " + Integer.parseInt(k));
-                bankDAOImpl.RutTien(userName, Integer.parseInt(k));
-                ticketDAOImpl.updateTicket(seat, idMovie); // cập nhật tình trạng ghế
-                 // System.out.println("Thanh toán thành công");
+                if (ticketDAOImpl.KiemTraVe(idMovie, seat)) {
+
+                    movie.setPriceMovie(ticketDAOImpl.getPriceMovie(idMovie).getPriceMovie());
+                    String k = movie.getPriceMovie();
+                    System.out.println("giá của vé là : " + Integer.parseInt(k));
+
+                    bankDAOImpl.RutTien(userName, Integer.parseInt(k));
+
+                    ticketDAOImpl.updateTicket(seat, idMovie); // cập nhật tình trạng ghế
+                    // System.out.println("Thanh toán thành công");
+                } else {
+                    System.out.println("Vé chưa được đặt");
+                }
             }
-            else System.out.println("Vé chưa được đặt");
-           
+            else {
+                System.out.println("Vé đã được thanh toán");
+            }
         }
-//        TicketDAOImpl ticketDAOImpl = new TicketDAOImpl();
-//         Scanner sc = new Scanner(System.in);
-//         System.out.println("Nhập ghế bạn muốn thanh toán");
-//         String seat = sc.nextLine();
-//         System.out.println("Nhập id phim bạn muốn thanh tooán");
-//         Integer idMovie = sc.nextInt();
-//         sc.nextLine();
-//         ticketDAOImpl.updateTicket(seat, idMovie);
+
     }
 }

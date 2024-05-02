@@ -19,5 +19,11 @@ public interface TicketDAO {
 
     public Movie getNameMovie(String idMovie);
 
+    public Movie getPriceMovie(String idMovie);
+
     public void showAllTicket();
+
+    public void updateTicket(String seat, String idMovie);
+    
+    public void HuyVe(String seat,String idMovie) ;
 }

@@ -31,17 +31,16 @@ public class MovieDAOImpl implements MovieDAO {
                 + "     VALUES (?,?,?,?,?)";
 
         try {
-            //conn = new DBContext().getConnection();
+            conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, movie.getIdMovie());
             ps.setString(2, movie.getNameMovie());
-            ps.setString(3, movie.getPriceMovie());
-            
+            ps.setString(3, movie.getPriceMovie());            
             ps.setString(4, movie.getIdRoomMovie());
             ps.setString(5, movie.getDirector());
             ps.executeUpdate();
-        } catch (SQLException e) {
-
+        } catch (Exception e) {
+             e.printStackTrace();
         }
     }
 
@@ -50,11 +49,12 @@ public class MovieDAOImpl implements MovieDAO {
         String sql = "DELETE FROM [dbo].[Movie] WHERE [idMovie] = ?";
 
         try {
+            conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,idMovie);
             ps.executeUpdate();
-        } catch (SQLException e) {
-            
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -74,8 +74,8 @@ public class MovieDAOImpl implements MovieDAO {
 
             }
 
-        } catch (Exception ex) {    
-            ex.printStackTrace();
+        } catch (Exception e) {    
+            e.printStackTrace();
         }
         return false;
     }
@@ -96,8 +96,8 @@ public class MovieDAOImpl implements MovieDAO {
 
             }
 
-        } catch (Exception ex) {
-
+        } catch (Exception e) {
+                 e.printStackTrace();
         }
         return false;
     }
@@ -113,7 +113,7 @@ public class MovieDAOImpl implements MovieDAO {
                 System.out.println(new Movie(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
             }
         } catch (Exception e) {
-          //  Logger.getLogger(MovieDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+                 e.printStackTrace();   
         }
     }
 
@@ -130,7 +130,7 @@ public class MovieDAOImpl implements MovieDAO {
                 System.out.println(new Movie(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
             }
         }  catch (Exception ex) {
-            Logger.getLogger(MovieDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+                 ex.printStackTrace();
         }
     }
 

@@ -40,8 +40,8 @@ public class AccountDAOImpl implements AccountDAO {
               
             }
 
-        } catch (Exception ex) {
-
+        } catch (Exception e) {
+          e.printStackTrace();
         }
         return false;
     }
@@ -60,8 +60,8 @@ public class AccountDAOImpl implements AccountDAO {
                 
             }
 
-        } catch (Exception ex) {
-            Logger.getLogger(MovieDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
@@ -79,8 +79,8 @@ public class AccountDAOImpl implements AccountDAO {
             ps.setString(1, acc.getUserName());
             ps.setString(2, acc.getPassWord()) ;
             ps.executeUpdate();
-        } catch (SQLException e) {
-            
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

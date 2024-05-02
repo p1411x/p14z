@@ -32,52 +32,52 @@ public class BankDAOImpl implements BankDAO {
                 + "     VALUES (?,?,?)";
         try {
  
-             conn = new DBContext().getConnection();
-             ps = conn.prepareStatement(sql);
+            conn = new DBContext().getConnection();
+            
+            ps = conn.prepareStatement(sql);
             ps.setString(1, bank.getUserName());
             ps.setString(2,bank.getMatKhau());
             ps.setInt(3, bank.getBalance());
 
             ps.executeUpdate();
-        } catch (SQLException e) {
-   //         e.printStackTrace();
-        } catch (Exception ex) {
-            Logger.getLogger(BankDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (Exception e) {
+           e.printStackTrace();
+        } 
     }
 
    public void RutTien(String userName, int temp)   {
-    String selectSql = "SELECT balance FROM [dbo].[Bank] WHERE [userName] = ?";
-    String updateSql = "UPDATE [dbo].[Bank] SET [balance] = ? WHERE [userName] = ?";
-    try {
-        conn = new DBContext().getConnection();
-        
-        // lấy giá trị balance
-        ps = conn.prepareStatement(selectSql);
-        ps.setString(1, userName);
-        rs = ps.executeQuery();
-        
-        if (rs.next()) {
-            int balance = rs.getInt("balance");
-            int newBalance = balance - temp;
-            if(newBalance >=0){
-            //để cập nhật số dư mới
-            ps = conn.prepareStatement(updateSql);
-            ps.setInt(1, newBalance);
-            ps.setString(2, userName);
-            ps.executeUpdate();
-                System.out.println("Thành công");
-            }
-            else System.out.println(" Số dư không đủ");
-        }
-        
-        // Đóng tất cả các tài nguyên
-//        rs.close();
-//        ps.close();
-//        conn.close();
-    }    catch (Exception ex) {
-            Logger.getLogger(BankDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       String selectSql = "SELECT balance FROM [dbo].[Bank] WHERE [userName] = ?";
+       String updateSql = "UPDATE [dbo].[Bank] SET [balance] = ? WHERE [userName] = ?";
+       try {
+           conn = new DBContext().getConnection();
+
+           // lấy giá trị balance
+           ps = conn.prepareStatement(selectSql);
+           ps.setString(1, userName);
+           rs = ps.executeQuery();
+
+           while (rs.next()) { 
+               int balance = rs.getInt("balance");
+               int newBalance = balance - temp;
+               if (newBalance >= 0) {
+                   // cập nhật số dư mới
+                   ps = conn.prepareStatement(updateSql);
+                   ps.setInt(1, newBalance);
+                   ps.setString(2, userName);
+                   ps.executeUpdate();
+                   System.out.println("Thành công");
+               } else {
+                   System.out.println(" Số dư không đủ");
+               }
+           }
+
+           // Đóng tất cả các tài nguyên
+           rs.close();
+           ps.close();
+           conn.close();
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
 }
 
 

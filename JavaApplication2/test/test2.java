@@ -1,5 +1,6 @@
 
 import DAO.MaGiamGiaDAOImpl;
+import controller.ThanhToanControl;
 import java.util.Scanner;
 import model.MaGiamGia;
 
@@ -13,36 +14,8 @@ import model.MaGiamGia;
  * @author SAD
  */
 public class test2 {
-    public static void main(String[] args) {
-//         MaGiamGiaDAOImpl maGiamGiaDAOImpl = new MaGiamGiaDAOImpl();
-//        Scanner sc = new Scanner(System.in);
-////        System.out.println("Nhập số thứ tự");
-////        String stt = sc.nextLine();
-//        System.out.println("Nhập mã giảm giá");
-//        String rateGiamGia = sc.nextLine();
-//        System.out.println("Nhập số lượng :"); 
-//        Integer soLuong = sc.nextInt();
-//        sc.nextLine();
-//       MaGiamGia maGiamGia = new MaGiamGia(rateGiamGia,soLuong);
-//       if(maGiamGiaDAOImpl.checkMaGiamGia(rateGiamGia)){    
-//           System.out.println("Cập nhật thành công");
-//           maGiamGiaDAOImpl.updateMaGiamGia(maGiamGia);
-//        }
-//       else System.out.println("Mã giảm giá không tồn tại");
-     MaGiamGiaDAOImpl maGiamGiaDAOImpl = new MaGiamGiaDAOImpl();
-        Scanner sc = new Scanner(System.in);
-//        System.out.println("Nhập số thứ tự");
-//        String stt = sc.nextLine();
-        System.out.println("Nhập mã giảm giá");
-        String rateGiamGia = sc.nextLine();
-        System.out.println("Nhập số lượng :"); 
-        Integer soLuong = sc.nextInt();
-        sc.nextLine();
-       MaGiamGia maGiamGia = new MaGiamGia(rateGiamGia,soLuong);
-       if(!maGiamGiaDAOImpl.checkMaGiamGia(rateGiamGia)){    
-           System.out.println("Thêm mã thành công");
-        maGiamGiaDAOImpl.addMaGiamGia(maGiamGia);
-        }
-       else System.out.println("Mã giảm giá đã tồn tại");      ;
+    public static void main(String[] args) throws Exception {
+    ThanhToanControl thanhToanControl = new ThanhToanControl();
+                 thanhToanControl.ThanhToan();
     }
 }

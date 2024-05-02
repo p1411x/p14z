@@ -11,5 +11,6 @@ public interface DrinkDAO {
     public boolean checkDrink(String nameDrink);
     public void addDrink(Drinks drink);
     public void updateDrink(Drinks drinks);
+     public void deleteDrink(String nameDrink);
     public void showAllDrink();
 }

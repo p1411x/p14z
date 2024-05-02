@@ -63,7 +63,7 @@ public class Tickets {
 
     @Override
     public String toString() {
-        return  "movie=" + movie + ", seat=" + seat + ", idMovie=" + idMovie ;
+        return  "movie=" + movie + ", seat=" + seat + ", idMovie=" + idMovie +"isPresent" + isPresent;
     }
 
     

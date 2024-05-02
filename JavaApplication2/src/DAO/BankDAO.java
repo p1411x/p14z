@@ -14,5 +14,7 @@ public interface BankDAO {
     public void NapTien(Bank bank);
      public boolean CheckTaiKhoanNapTien(String userName);
       public void RutTien(String userName, int temp);
-    
+      public void NapThemTien(String userName, int temp);
+     public boolean CheckTaiKhoanRutTien(String userName,String matKhau);
+      public boolean CheckMatKhau(String matKhau);
 }
